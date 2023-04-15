@@ -57,26 +57,13 @@ def input_error(func):  # Все ошибки пользовательского
 
 # @input_error
 def parser(command):  # Парсер команд. Часть, которая отвечает за разбор введенных пользователем строк, выделение из строки ключевых слов и модификаторов команд.
-    if command.startswith("add "):
+    if command.startswith("add ") or command.startswith("change "):
         #name, *remaining = command
         command = command.split(" ", 2)
         command = command[1:]
         name = command[0].capitalize()
         phone = []
         for i in command[1]:
-            if not i.isdigit():
-                continue
-            elif i.isdigit() and len(phone) > 0 and phone[-1].isdigit():
-                phone[-1] += i
-            else:
-                phone += i
-        return (adder, name, phone[-1])
-        # adder(name, phone[-1])
-    elif command.startswith("change "):
-        command = command.split(" ", 2)
-        name = command[1].capitalize()
-        phone = []
-        for i in command[2]:
             if not i.isdigit():
                 continue
             elif i.isdigit() and len(phone) > 0 and phone[-1].isdigit():
